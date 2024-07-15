@@ -1,0 +1,47 @@
+li{
+    margin:5px 0;
+    padding: 5px;
+    background-color: rgba(87, 255, 218, 0.15);
+    border-radius: 5px;
+
+    transition:background-color 0.5s;
+}
+
+li:hover{
+    background-color: rgba(87, 255, 218, 0.3);
+}
+
+li>p{
+    display: inline;
+}
+
+li>button, li>label{
+    float: right;
+}
+
+label{
+    font-size: large;
+}
+
+#select{
+    font-size: 17px;
+    padding: 1px;
+}
+
+.input-confirm{
+    margin: auto;
+}
+
+.input-confirm>input{
+    display: inline;
+    font-size: 20px;
+    width: 800px;
+    padding: 5px;
+}
+
+.input-confirm>button{
+    display: inline;
+    font-size: 20px;
+    padding: 5px;
+    margin-left: 5px;
+}
