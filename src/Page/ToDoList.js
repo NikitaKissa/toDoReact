@@ -1,5 +1,7 @@
 import React, {useEffect, useRef, useState} from "react";
 import Todo from "./Todo";
+import useFetchGet from "../CustomHooks/useFetch";
+import List from "./List";
 
 function ToDoList() {
     const inputRef = useRef();
@@ -7,13 +9,15 @@ function ToDoList() {
     const [renderItems, setRenderItems] = useState([]);
     const [id, setId] = useState(0);
     const [selectValue, setSelectValue] = useState("All");
+    const {data, isLoading, error} =  useFetchGet("http://localhost:3030/ToDoList");
 
     useEffect(() => {
-        console.log("use effect");
-        const ToDos = localStorage.getItem("ToDo List");
-        if(ToDos !== null)
-            setItems(JSON.parse(ToDos));
-    }, []);
+        if(isLoading === true)
+            return;
+
+        setItems(data);
+
+    }, [isLoading]);
 
     useEffect(()=>{
         localStorage.setItem("ToDo List", JSON.stringify(items));
@@ -95,18 +99,7 @@ function ToDoList() {
                     `Today I have to do ${items.length} tasks`
                 }
             </h3>
-            <ol key={"list"}>
-                {renderItems.map((item) => (
-                    <Todo
-                        checkState={item.isMade}
-                        changeCheck={changeCheck}
-                        text={item.text}
-                        onDelete={onDelete}
-                        componentId={item.id}
-                        key={`TDLe${item.id}`}
-                    />
-                ))}
-            </ol>
+           <List renderItems={renderItems} changeCheck={changeCheck} nDelete={onDelete} isLoading={isLoading}/>
         </div>
     );
 }

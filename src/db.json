@@ -1,0 +1,21 @@
+{
+  "ToDoList":[
+    {
+      "id": 0,
+      "text": "Make cake",
+      "isMade": false
+    },
+
+    {
+      "id": 1,
+      "text": "Make cookies",
+      "isMade": true
+    },
+
+    {
+      "id": 2,
+      "text": "Go to gym",
+      "isMade": false
+    }
+  ]
+}
